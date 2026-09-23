@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الموضوع | Tariq Tuner</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Tahoma, sans-serif; background: #070b12; color: #fff; line-height: 1.8; }
+    header { background: linear-gradient(135deg, #05080d, #0b1d33); padding: 40px 20px; text-align: center; border-bottom: 2px solid #168cff; }
+    header img { width: 150px; max-width: 70%; height: auto; margin-bottom: 15px; }
+    header p { color: #aab4c2; }
+    nav { background: #0b1018; padding: 14px; text-align: center; border-bottom: 1px solid #1c2735; position: sticky; top: 0; z-index: 10; }
+    nav a { display: inline-block; color: white; text-decoration: none; margin: 0 10px; font-weight: bold; }
+    a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+    .container { width: 92%; max-width: 1100px; margin: 35px auto; }
+    .post-card { background: #0d141e; border: 1px solid #1a2635; border-radius: 16px; padding: 28px; overflow-wrap: anywhere; }
+    .category { display: inline-block; color: #168cff; font-size: 14px; margin-bottom: 8px; }
+    .post-title { font-size: 30px; line-height: 1.6; margin-bottom: 16px; }
+    .post-summary { color: #aeb8c5; margin-bottom: 24px; white-space: pre-wrap; }
+    .post-image { display: block; width: 100%; height: auto; max-height: 650px; object-fit: contain; background: #05080d; border-radius: 10px; margin: 24px auto; }
+    .post-content { font-size: 18px; white-space: pre-wrap; }
+    .image-unavailable { color: #aeb8c5; padding: 20px 0; }
+    .button { display: inline-block; padding: 9px 15px; background: #168cff; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; }
+    .post-link { margin-top: 25px; }
+    .back { display: inline-block; margin-top: 24px; color: #aab4c2; }
+    .empty { background: #0d141e; border: 1px dashed #26374b; color: #aeb8c5; border-radius: 14px; padding: 30px; text-align: center; }
+    .empty .button { margin-top: 16px; }
+    footer { margin-top: 60px; padding: 30px 20px; text-align: center; background: #05080d; color: #7f8997; border-top: 1px solid #182230; }
+    footer strong { color: #168cff; }
+    @media (max-width: 600px) {
+      .post-card { padding: 20px; }
+      .post-title { font-size: 24px; }
+      .post-content { font-size: 16px; }
+    }
+  </style>
+  <script src="js/posts.js" defer></script>
+  <script src="js/post.js" defer></script>
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="IMG_0035.png" alt="Tariq Tuner — الرئيسية"></a>
+    <p>شروحات وتجارب برمجة وتشخيص السيارات</p>
+  </header>
+  <nav aria-label="التنقل الرئيسي">
+    <a href="index.html">الرئيسية</a>
+    <a href="gm.html#topics">مواضيع GM</a>
+  </nav>
+  <main class="container">
+    <div id="post" aria-live="polite" aria-busy="true">
+      <div class="empty">جاري تحميل الموضوع...</div>
+    </div>
+    <noscript><p class="empty">يرجى تفعيل JavaScript لعرض الموضوع.</p></noscript>
+    <a class="back" href="gm.html#topics">الرجوع إلى مواضيع GM</a>
+  </main>
+  <footer>
+    <strong>Tariq Tuner</strong><br>
+    Automotive Programming • Diagnostics • ECU / TCU<br>
+    © 2026 جميع الحقوق محفوظة
+  </footer>
+</body>
+</html>

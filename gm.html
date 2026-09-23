@@ -180,6 +180,11 @@
         font-size: 28px;
       }
     }
+    .card { min-width: 0; overflow-wrap: anywhere; }
+    .image-unavailable { padding: 20px; color: #aeb8c5; }
+    .empty .button { margin-top: 16px; }
+    #topics { scroll-margin-top: 80px; }
+    a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
   </style>
 </head>
 
@@ -214,10 +219,11 @@
       مواضيع GM
     </h2>
 
-    <div class="cards" id="posts">
+    <div class="cards" id="posts" aria-live="polite" aria-busy="true">
       <div class="empty">جاري تحميل المواضيع...</div>
     </div>
 
+    <noscript><p class="empty">يرجى تفعيل JavaScript لعرض المواضيع.</p></noscript>
   </div>
 
   <footer>
@@ -229,101 +235,8 @@
   </footer>
 
 
-  <script>
-    const categoryNames = {
-      engine: "برمجة المحرك",
-      transmission: "برمجة القير",
-      cooling: "المراوح والحرارة",
-      diagnostics: "الأعطال والتشخيص",
-      experience: "تجارب وتعديلات",
-      tool: "أدوات",
-      software: "برامج",
-      product: "منتجات"
-    };
-
-    function escapeHTML(value) {
-      return String(value || "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    async function loadPosts() {
-      const container = document.getElementById("posts");
-
-      try {
-        const response = await fetch("data/posts.json");
-
-        if (!response.ok) {
-          throw new Error("تعذر تحميل ملف المواضيع");
-        }
-
-        const posts = await response.json();
-
-        const gmPosts = posts.filter(post =>
-          post.brand === "GM" &&
-          post.type === "guides"
-        );
-
-        if (gmPosts.length === 0) {
-          container.innerHTML =
-            '<div class="empty">لا توجد مواضيع GM حاليًا.</div>';
-          return;
-        }
-
-        container.innerHTML = gmPosts.map(post => {
-
-          const image = post.image
-            ? `<img src="${escapeHTML(post.image)}" alt="${escapeHTML(post.title)}">`
-            : "";
-
-          const category =
-            categoryNames[post.category] || post.category || "GM";
-
-          return `
-            <article class="card">
-
-              ${image}
-
-              <div class="card-content">
-
-                <span class="category">
-                  ${escapeHTML(category)}
-                </span>
-
-                <h3>
-                  ${escapeHTML(post.title)}
-                </h3>
-
-                <p>
-                  ${escapeHTML(post.summary)}
-                </p>
-
-                <a class="button"
-                   href="post.html?id=${encodeURIComponent(post.id)}">
-                  اقرأ الموضوع
-                </a>
-
-              </div>
-
-            </article>
-          `;
-
-        }).join("");
-
-      } catch (error) {
-
-        container.innerHTML =
-          '<div class="empty">حدث خطأ أثناء تحميل المواضيع.</div>';
-
-        console.error(error);
-      }
-    }
-
-    loadPosts();
-  </script>
+  <script src="js/posts.js" defer></script>
+  <script src="js/gm.js" defer></script>
 
 </body>
 
