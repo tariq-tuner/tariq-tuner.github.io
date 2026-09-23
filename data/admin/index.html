@@ -1,1 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>لوحة التحكم | Tariq Tuner</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #070b12;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #05080d, #0b1d33);
+      border-bottom: 2px solid #168cff;
+    }
+
+    header h1 {
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #aab4c2;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 800px;
+      margin: 35px auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #0d141e;
+      border: 1px solid #1a2635;
+      border-radius: 15px;
+      padding: 25px;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #aeb8c5;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .button {
+      display: block;
+      text-align: center;
+      padding: 11px;
+      border-radius: 8px;
+      background: #168cff;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      color: #aab4c2;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>لوحة تحكم Tariq Tuner</h1>
+
+    <p>
+      إدارة المواضيع والصور ومحتوى الموقع
+    </p>
+  </header>
+
+  <div class="container">
+
+    <div class="cards">
+
+      <div class="card">
+        <h2>➕ إضافة موضوع</h2>
+        <p>
+          إضافة موضوع جديد للشروحات أو الأدوات أو البرامج أو المنتجات.
+        </p>
+
+        <a class="button"
+           href="https://github.com/tariq-tuner/tariq-tuner.github.io/new/main"
+           target="_blank">
+          إضافة موضوع
+        </a>
+      </div>
+
+
+      <div class="card">
+        <h2>📝 بيانات المواضيع</h2>
+        <p>
+          فتح ملف بيانات المواضيع الحالي وتعديله.
+        </p>
+
+        <a class="button"
+           href="https://github.com/tariq-tuner/tariq-tuner.github.io/edit/main/data/posts.json"
+           target="_blank">
+          تعديل المواضيع
+        </a>
+      </div>
+
+
+      <div class="card">
+        <h2>🖼️ رفع صور</h2>
+        <p>
+          رفع صور الشروحات والمنتجات إلى المستودع.
+        </p>
+
+        <a class="button"
+           href="https://github.com/tariq-tuner/tariq-tuner.github.io/upload/main"
+           target="_blank">
+          رفع صورة
+        </a>
+      </div>
+
+
+      <div class="card">
+        <h2>🌐 مشاهدة الموقع</h2>
+        <p>
+          فتح الموقع الرئيسي ومراجعة آخر التعديلات.
+        </p>
+
+        <a class="button"
+           href="https://tariq-tuner.github.io/"
+           target="_blank">
+          فتح الموقع
+        </a>
+      </div>
+
+    </div>
+
+    <a class="back" href="../index.html">
+      ← الرجوع للموقع
+    </a>
+
+  </div>
+
+</body>
+
+</html>
