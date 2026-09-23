@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>إضافة موضوع | Tariq Tuner</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #070b12;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 20px;
+      background: linear-gradient(135deg, #05080d, #0b1d33);
+      border-bottom: 2px solid #168cff;
+    }
+
+    header h1 {
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #aab4c2;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 750px;
+      margin: 35px auto;
+    }
+
+    .form-box {
+      background: #0d141e;
+      border: 1px solid #1a2635;
+      border-radius: 16px;
+      padding: 25px;
+    }
+
+    label {
+      display: block;
+      margin: 18px 0 7px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      background: #070b12;
+      color: #ffffff;
+      border: 1px solid #26374b;
+      border-radius: 9px;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 22px;
+      border: 0;
+      border-radius: 9px;
+      background: #168cff;
+      color: #fff;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .secondary {
+      display: block;
+      text-align: center;
+      background: #182231;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px;
+      margin-top: 12px;
+      border-radius: 9px;
+      border: 1px solid #2b3a4c;
+    }
+
+    .result {
+      margin-top: 25px;
+      display: none;
+    }
+
+    #output {
+      min-height: 220px;
+      font-family: monospace;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      color: #aab4c2;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>إضافة موضوع</h1>
+    <p>إضافة محتوى جديد إلى Tariq Tuner</p>
+  </header>
+
+  <div class="container">
+
+    <div class="form-box">
+
+      <label>القسم الرئيسي</label>
+
+      <select id="type">
+        <option value="guides">الشروحات</option>
+        <option value="tools">الأدوات</option>
+        <option value="software">البرامج</option>
+        <option value="products">المنتجات</option>
+      </select>
+
+
+      <label>الشركة</label>
+
+      <select id="brand">
+        <option value="GM">GM</option>
+        <option value="Ford">Ford</option>
+        <option value="Toyota-Lexus">Toyota / Lexus</option>
+        <option value="Hyundai">Hyundai</option>
+        <option value="Kia">Kia</option>
+        <option value="Nissan-Infiniti">Nissan / Infiniti</option>
+        <option value="Mopar">Mopar</option>
+        <option value="Mazda">Mazda</option>
+        <option value="General">عام</option>
+      </select>
+
+
+      <label>التصنيف</label>
+
+      <select id="category">
+        <option value="engine">برمجة المحرك</option>
+        <option value="transmission">برمجة القير</option>
+        <option value="cooling">المراوح والحرارة</option>
+        <option value="diagnostics">الأعطال والتشخيص</option>
+        <option value="experience">تجارب وتعديلات</option>
+        <option value="tool">أداة فحص أو برمجة</option>
+        <option value="software">برنامج</option>
+        <option value="product">منتج</option>
+      </select>
+
+
+      <label>عنوان الموضوع</label>
+
+      <input
+        id="title"
+        type="text"
+        placeholder="مثال: برمجة مراوح جمس 2006">
+
+
+      <label>وصف مختصر</label>
+
+      <textarea
+        id="summary"
+        placeholder="وصف مختصر يظهر في بطاقة الموضوع"></textarea>
+
+
+      <label>الشرح الكامل</label>
+
+      <textarea
+        id="content"
+        placeholder="اكتب الشرح والملاحظات والتجربة هنا"></textarea>
+
+
+      <label>رابط خارجي أو رابط المنتج</label>
+
+      <input
+        id="link"
+        type="url"
+        placeholder="https://">
+
+
+      <label>مسار الصورة</label>
+
+      <input
+        id="image"
+        type="text"
+        placeholder="مثال: images/gm-fans.jpg">
+
+
+      <button class="button" onclick="generatePost()">
+        تجهيز الموضوع
+      </button>
+
+
+      <div class="result" id="result">
+
+        <label>بيانات الموضوع</label>
+
+        <textarea id="output" readonly></textarea>
+
+        <button class="button" onclick="copyPost()">
+          نسخ بيانات الموضوع
+        </button>
+
+        <a
+          class="secondary"
+          href="https://github.com/tariq-tuner/tariq-tuner.github.io/edit/main/data/posts.json"
+          target="_blank">
+          فتح ملف المواضيع
+        </a>
+
+      </div>
+
+
+      <a class="back" href="index.html">
+        ← الرجوع إلى لوحة التحكم
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function generatePost() {
+
+      const post = {
+        id: Date.now(),
+        type: document.getElementById("type").value,
+        brand: document.getElementById("brand").value,
+        category: document.getElementById("category").value,
+        title: document.getElementById("title").value,
+        summary: document.getElementById("summary").value,
+        content: document.getElementById("content").value,
+        image: document.getElementById("image").value,
+        link: document.getElementById("link").value
+      };
+
+      document.getElementById("output").value =
+        JSON.stringify(post, null, 2);
+
+      document.getElementById("result").style.display = "block";
+    }
+
+
+    function copyPost() {
+
+      const output = document.getElementById("output");
+
+      output.select();
+      output.setSelectionRange(0, 99999);
+
+      navigator.clipboard.writeText(output.value);
+
+      alert("تم نسخ بيانات الموضوع");
+    }
+
+  </script>
+
+</body>
+
+</html>
