@@ -109,6 +109,13 @@
       text-align: left;
     }
 
+    .help {
+      margin-top: 12px;
+      color: #aab4c2;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
     .back {
       display: block;
       text-align: center;
@@ -128,9 +135,9 @@
 
   <div class="container">
 
-    <div class="form-box">
+    <form class="form-box" id="post-form">
 
-      <label>القسم الرئيسي</label>
+      <label for="type">القسم الرئيسي</label>
 
       <select id="type">
         <option value="guides">الشروحات</option>
@@ -140,7 +147,7 @@
       </select>
 
 
-      <label>الشركة</label>
+      <label for="brand">الشركة</label>
 
       <select id="brand">
         <option value="GM">GM</option>
@@ -155,7 +162,7 @@
       </select>
 
 
-      <label>التصنيف</label>
+      <label for="category">التصنيف</label>
 
       <select id="category">
         <option value="engine">برمجة المحرك</option>
@@ -169,29 +176,31 @@
       </select>
 
 
-      <label>عنوان الموضوع</label>
+      <label for="title">عنوان الموضوع</label>
 
       <input
         id="title"
         type="text"
+        required
         placeholder="مثال: برمجة مراوح جمس 2006">
 
 
-      <label>وصف مختصر</label>
+      <label for="summary">وصف مختصر</label>
 
       <textarea
         id="summary"
         placeholder="وصف مختصر يظهر في بطاقة الموضوع"></textarea>
 
 
-      <label>الشرح الكامل</label>
+      <label for="content">الشرح الكامل</label>
 
       <textarea
         id="content"
+        required
         placeholder="اكتب الشرح والملاحظات والتجربة هنا"></textarea>
 
 
-      <label>رابط خارجي أو رابط المنتج</label>
+      <label for="link">رابط خارجي أو رابط المنتج</label>
 
       <input
         id="link"
@@ -199,7 +208,7 @@
         placeholder="https://">
 
 
-      <label>مسار الصورة</label>
+      <label for="image">مسار الصورة</label>
 
       <input
         id="image"
@@ -207,25 +216,29 @@
         placeholder="مثال: images/gm-fans.jpg">
 
 
-      <button class="button" onclick="generatePost()">
+      <button class="button" type="submit">
         تجهيز الموضوع
       </button>
 
 
       <div class="result" id="result">
 
-        <label>بيانات الموضوع</label>
+        <label for="output">بيانات الموضوع</label>
 
         <textarea id="output" readonly></textarea>
 
-        <button class="button" onclick="copyPost()">
+        <p class="help">أضف هذه البيانات كعنصر جديد داخل القائمة في ملف المواضيع، مع فاصلة بينه وبين العنصر السابق. احتفظ بالمواضيع الموجودة؛ تجهيز البيانات هنا لا ينشر الموضوع تلقائيًا.</p>
+
+        <button class="button" type="button" onclick="copyPost()">
           نسخ بيانات الموضوع
         </button>
+
+        <p class="help" id="copy-status" role="status" aria-live="polite"></p>
 
         <a
           class="secondary"
           href="https://github.com/tariq-tuner/tariq-tuner.github.io/edit/main/data/posts.json"
-          target="_blank">
+          target="_blank" rel="noopener noreferrer">
           فتح ملف المواضيع
         </a>
 
@@ -236,44 +249,100 @@
         ← الرجوع إلى لوحة التحكم
       </a>
 
-    </div>
+    </form>
 
   </div>
 
 
   <script>
 
+    const postForm = document.getElementById("post-form");
+
+    postForm.addEventListener("input", function (event) {
+      event.target.setCustomValidity("");
+    });
+
+    postForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      generatePost();
+    });
+
+    function isHttpUrl(value) {
+      if (!/^https?:\/\//i.test(value) || /[\u0000-\u001f\u007f\\]/.test(value)) return false;
+      try {
+        const url = new URL(value);
+        return (url.protocol === "https:" || url.protocol === "http:") &&
+          !url.username && !url.password;
+      } catch {
+        return false;
+      }
+    }
+
+    function isImagePath(value) {
+      if (isHttpUrl(value)) return true;
+      // Resolve local paths from the site root, not the admin folder.
+      if (/^[a-z][a-z\d+.-]*:/i.test(value) || value.startsWith("//") ||
+          /[\\\u0000-\u001f\u007f]/.test(value)) return false;
+      try {
+        const imageUrl = new URL(value, new URL("../", window.location.href));
+        return imageUrl.origin === window.location.origin;
+      } catch {
+        return false;
+      }
+    }
+
     function generatePost() {
+      const title = document.getElementById("title");
+      const content = document.getElementById("content");
+      const link = document.getElementById("link");
+      const image = document.getElementById("image");
+
+      title.setCustomValidity(title.value.trim() ? "" : "اكتب عنوان الموضوع.");
+      content.setCustomValidity(content.value.trim() ? "" : "اكتب الشرح الكامل.");
+      link.setCustomValidity(!link.value.trim() || isHttpUrl(link.value.trim()) ?
+        "" : "أدخل رابطًا يبدأ بـ https:// أو http:// بدون بيانات دخول.");
+      image.setCustomValidity(!image.value.trim() || isImagePath(image.value.trim()) ?
+        "" : "أدخل مسار صورة محليًا أو رابطًا يبدأ بـ https:// أو http://.");
+
+      if (!postForm.reportValidity()) return;
 
       const post = {
         id: Date.now(),
         type: document.getElementById("type").value,
         brand: document.getElementById("brand").value,
         category: document.getElementById("category").value,
-        title: document.getElementById("title").value,
-        summary: document.getElementById("summary").value,
-        content: document.getElementById("content").value,
-        image: document.getElementById("image").value,
-        link: document.getElementById("link").value
+        title: title.value.trim(),
+        summary: document.getElementById("summary").value.trim(),
+        content: content.value.trim(),
+        image: image.value.trim(),
+        link: link.value.trim()
       };
 
       document.getElementById("output").value =
         JSON.stringify(post, null, 2);
 
       document.getElementById("result").style.display = "block";
+      document.getElementById("copy-status").textContent = "";
     }
 
 
-    function copyPost() {
+    async function copyPost() {
 
       const output = document.getElementById("output");
 
-      output.select();
-      output.setSelectionRange(0, 99999);
+      const status = document.getElementById("copy-status");
+      if (!output.value) return;
 
-      navigator.clipboard.writeText(output.value);
-
-      alert("تم نسخ بيانات الموضوع");
+      try {
+        if (!navigator.clipboard) throw new Error("Clipboard unavailable");
+        await navigator.clipboard.writeText(output.value);
+        status.textContent = "تم نسخ بيانات الموضوع.";
+      } catch {
+        output.focus();
+        output.select();
+        output.setSelectionRange(0, output.value.length);
+        status.textContent = "تعذّر النسخ تلقائيًا. البيانات محددة الآن؛ انسخها يدويًا من مربع النص.";
+      }
     }
 
   </script>
