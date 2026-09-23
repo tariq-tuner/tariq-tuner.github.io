@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GM | Tariq Tuner</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #070b12;
+      color: #ffffff;
+      line-height: 1.8;
+    }
+
+    header {
+      background: linear-gradient(135deg, #05080d, #0b1d33);
+      padding: 45px 20px;
+      text-align: center;
+      border-bottom: 2px solid #168cff;
+    }
+
+    header img {
+      width: 150px;
+      max-width: 70%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    header h1 span {
+      color: #168cff;
+    }
+
+    header p {
+      color: #aab4c2;
+      font-size: 16px;
+    }
+
+    nav {
+      background: #0b1018;
+      padding: 14px;
+      text-align: center;
+      border-bottom: 1px solid #1c2735;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #168cff;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+
+    .intro {
+      background: #0d141e;
+      border: 1px solid #1a2635;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 35px;
+    }
+
+    .intro strong {
+      color: #168cff;
+    }
+
+    .section-title {
+      margin: 35px 0 25px;
+      font-size: 27px;
+      border-right: 5px solid #168cff;
+      padding-right: 12px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #0d141e;
+      border: 1px solid #1a2635;
+      border-radius: 16px;
+      padding: 23px;
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #168cff;
+    }
+
+    .category {
+      color: #168cff;
+      font-size: 13px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #aeb8c5;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 9px 16px;
+      background: #182231;
+      border: 1px solid #2b3a4c;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      border-color: #168cff;
+      color: #168cff;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 30px 20px;
+      text-align: center;
+      background: #05080d;
+      color: #7f8997;
+      border-top: 1px solid #182230;
+    }
+
+    footer strong {
+      color: #168cff;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <img src="IMG_0035.png" alt="Tariq Tuner">
+
+    <h1><span>GM</span> Guides</h1>
+
+    <p>
+      شروحات وتجارب برمجة وتشخيص سيارات GM
+    </p>
+
+  </header>
+
+
+  <nav>
+    <a href="index.html">الرئيسية</a>
+    <a href="#topics">المواضيع</a>
+  </nav>
+
+
+  <div class="container">
+
+    <div class="intro">
+
+      <h2>قسم GM</h2>
+
+      <p>
+        هنا أجمع <strong>شروحات وتجارب GM</strong>
+        الخاصة ببرمجة المحرك والقير والمراوح،
+        بالإضافة إلى المشاكل الشائعة والتعديلات التي تمت تجربتها عملياً.
+      </p>
+
+    </div>
+
+
+    <h2 class="section-title" id="topics">
+      أقسام GM
+    </h2>
+
+
+    <div class="cards">
+
+      <div class="card">
+
+        <span class="category">ECM / ECU</span>
+
+        <h3>برمجة المحرك</h3>
+
+        <p>
+          شروحات برمجة كمبيوتر المحرك،
+          الخرائط، الأكواد والتعديلات المرتبطة بالأداء.
+        </p>
+
+        <a class="button" href="#">
+          عرض المواضيع
+        </a>
+
+      </div>
+
+
+      <div class="card">
+
+        <span class="category">TCM</span>
+
+        <h3>برمجة القير</h3>
+
+        <p>
+          شروحات برمجة ناقل الحركة،
+          التبديلات، مقاسات الكفرات وإعدادات القير.
+        </p>
+
+        <a class="button" href="#">
+          عرض المواضيع
+        </a>
+
+      </div>
+
+
+      <div class="card">
+
+        <span class="category">Cooling</span>
+
+        <h3>برمجة المراوح والحرارة</h3>
+
+        <p>
+          إعدادات المراوح،
+          البلف الرياضي ودرجات تشغيل المراوح المناسبة.
+        </p>
+
+        <a class="button" href="#">
+          عرض المواضيع
+        </a>
+
+      </div>
+
+
+      <div class="card">
+
+        <span class="category">Diagnostics</span>
+
+        <h3>الأعطال والمشاكل الشائعة</h3>
+
+        <p>
+          أكواد الأعطال،
+          مشاكل البرمجة والتشخيص والحلول التي تمت تجربتها.
+        </p>
+
+        <a class="button" href="#">
+          عرض المواضيع
+        </a>
+
+      </div>
+
+
+      <div class="card">
+
+        <span class="category">My Experience</span>
+
+        <h3>تجارب وتعديلات مفيدة</h3>
+
+        <p>
+          قطع وتعديلات وتجارب عملية على سيارات GM
+          مع الملاحظات والنتائج بعد الاستخدام.
+        </p>
+
+        <a class="button" href="#">
+          عرض المواضيع
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <footer>
+
+    <strong>Tariq Tuner</strong>
+
+    <br>
+
+    GM Programming • Diagnostics • ECU / TCU
+
+    <br>
+
+    © 2026 جميع الحقوق محفوظة
+
+  </footer>
+
+</body>
+
+</html>
