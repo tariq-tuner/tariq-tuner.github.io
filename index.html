@@ -28,13 +28,11 @@
       border-bottom: 2px solid #168cff;
     }
 
-    header h1 {
-      font-size: 38px;
-      margin-bottom: 10px;
-    }
-
-    header h1 span {
-      color: #168cff;
+    header img {
+      width: 180px;
+      max-width: 80%;
+      height: auto;
+      margin-bottom: 15px;
     }
 
     header p {
@@ -92,7 +90,7 @@
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 22px;
     }
 
@@ -118,7 +116,7 @@
 
     .card h3 {
       margin-bottom: 10px;
-      font-size: 21px;
+      font-size: 22px;
     }
 
     .card p {
@@ -143,13 +141,13 @@
       border: 1px solid #2b3a4c;
     }
 
-    .note {
-      margin-top: 40px;
-      background: #101823;
-      padding: 20px;
-      border-radius: 12px;
-      border-right: 4px solid #168cff;
-      color: #bac4cf;
+    .empty-section {
+      background: #0d141e;
+      border: 1px dashed #26374b;
+      color: #7f8997;
+      border-radius: 14px;
+      padding: 25px;
+      text-align: center;
     }
 
     footer {
@@ -166,8 +164,12 @@
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 30px;
+      header {
+        padding: 40px 15px;
+      }
+
+      header img {
+        width: 150px;
       }
 
       nav a {
@@ -175,20 +177,28 @@
         margin: 4px 7px;
         font-size: 14px;
       }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
+
 </head>
 
 <body>
 
   <header>
-<img src="IMG_0035.png" alt="Tariq Tuner" style="width:180px; max-width:80%; height:auto; margin-bottom:15px;">    
+
+    <img src="IMG_0035.png" alt="Tariq Tuner">
 
     <p>
       مرجع عملي لبرمجة وتشخيص السيارات،
       الأدوات والبرامج والقطع التي جربتها وأستخدمها في العمل.
     </p>
+
   </header>
+
 
   <nav>
     <a href="#guides">الشروحات</a>
@@ -197,9 +207,11 @@
     <a href="#products">المنتجات</a>
   </nav>
 
+
   <div class="container">
 
     <div class="intro">
+
       <h2>أهلاً بك 👋</h2>
 
       <p>
@@ -210,8 +222,11 @@
         ستجد هنا شروحات، حلول لبعض المشاكل،
         أدوات فحص وبرمجة، وروابط منتجات قمت بتجربتها أو استخدامها.
       </p>
+
     </div>
 
+
+    <!-- الشروحات -->
 
     <h2 class="section-title" id="guides">
       الشروحات والمراجع
@@ -219,160 +234,199 @@
 
     <div class="cards">
 
-      <div class="card">
-        <span class="category">برمجة السيارات</span>
 
-        <h3>برمجة Hyundai Elantra</h3>
+      <!-- GM -->
+
+      <div class="card">
+
+        <span class="category">الشروحات</span>
+
+        <h3>GM</h3>
 
         <p>
-          معلومات وتجارب حول برمجة الإلنترا،
-          مشاكل السوفتوير، الأكواد الشائعة،
-          والأدوات المستخدمة في القراءة والبرمجة.
+          Chevrolet • GMC • Cadillac
         </p>
 
         <a class="button secondary" href="#">
-          اقرأ الشرح
+          عرض الشروحات
         </a>
+
       </div>
 
 
-      <div class="card">
-        <span class="category">تركيبات</span>
+      <!-- Ford -->
 
-        <h3>وصلة إلغاء التراكشن للـ FJ</h3>
+      <div class="card">
+
+        <span class="category">الشروحات</span>
+
+        <h3>Ford</h3>
 
         <p>
-          شرح الوصلة، طريقة التركيب،
-          وطريقة الاستخدام مع أهم الملاحظات قبل التركيب.
+          Ford • Lincoln
         </p>
 
         <a class="button secondary" href="#">
-          اقرأ الشرح
+          عرض الشروحات
         </a>
+
       </div>
+
+
+      <!-- Toyota Lexus -->
+
+      <div class="card">
+
+        <span class="category">الشروحات</span>
+
+        <h3>Toyota / Lexus</h3>
+
+        <p>
+          تويوتا ولكزس
+        </p>
+
+        <a class="button secondary" href="#">
+          عرض الشروحات
+        </a>
+
+      </div>
+
+
+      <!-- Hyundai -->
+
+      <div class="card">
+
+        <span class="category">الشروحات</span>
+
+        <h3>Hyundai</h3>
+
+        <p>
+          هيونداي
+        </p>
+
+        <a class="button secondary" href="#">
+          عرض الشروحات
+        </a>
+
+      </div>
+
+
+      <!-- Kia -->
+
+      <div class="card">
+
+        <span class="category">الشروحات</span>
+
+        <h3>Kia</h3>
+
+        <p>
+          كيا
+        </p>
+
+        <a class="button secondary" href="#">
+          عرض الشروحات
+        </a>
+
+      </div>
+
+
+      <!-- Nissan -->
+
+      <div class="card">
+
+        <span class="category">الشروحات</span>
+
+        <h3>Nissan</h3>
+
+        <p>
+          Nissan • Infiniti
+        </p>
+
+        <a class="button secondary" href="#">
+          عرض الشروحات
+        </a>
+
+      </div>
+
+
+      <!-- Mopar -->
+
+      <div class="card">
+
+        <span class="category">الشروحات</span>
+
+        <h3>Mopar</h3>
+
+        <p>
+          Dodge • Jeep • Chrysler • Ram
+        </p>
+
+        <a class="button secondary" href="#">
+          عرض الشروحات
+        </a>
+
+      </div>
+
+
+      <!-- Mazda -->
+
+      <div class="card">
+
+        <span class="category">الشروحات</span>
+
+        <h3>Mazda</h3>
+
+        <p>
+          مازدا
+        </p>
+
+        <a class="button secondary" href="#">
+          عرض الشروحات
+        </a>
+
+      </div>
+
 
     </div>
 
+
+    <!-- الأدوات -->
 
     <h2 class="section-title" id="tools">
       أدوات الفحص والبرمجة
     </h2>
 
-    <div class="cards">
-
-      <div class="card">
-        <span class="category">OBD</span>
-
-        <h3>جهاز فحص OBD</h3>
-
-        <p>
-          مراجعة الجهاز، استخداماته،
-          مميزاته وعيوبه، والسيارات التي تمت تجربته عليها.
-        </p>
-
-        <a class="button" href="#" target="_blank" rel="noopener">
-          رابط المنتج
-        </a>
-      </div>
-
-
-      <div class="card">
-        <span class="category">ECU Programming</span>
-
-        <h3>وصلة برمجة ECU</h3>
-
-        <p>
-          معلومات عن الوصلة،
-          استخداماتها والأعمال المناسبة لها
-          قبل اتخاذ قرار الشراء.
-        </p>
-
-        <a class="button" href="#" target="_blank" rel="noopener">
-          رابط المنتج
-        </a>
-      </div>
-
+    <div class="empty-section">
+      سيتم إضافة الأدوات والمعدات هنا قريباً.
     </div>
 
+
+    <!-- البرامج -->
 
     <h2 class="section-title" id="software">
       برامج مفيدة
     </h2>
 
-    <div class="cards">
-
-      <div class="card">
-        <span class="category">Diagnostics</span>
-
-        <h3>برامج فحص وتشخيص السيارات</h3>
-
-        <p>
-          شروحات وتجارب لبرامج الفحص،
-          التشخيص والبرمجة التي أستخدمها في العمل.
-        </p>
-
-        <a class="button secondary" href="#">
-          استعراض البرامج
-        </a>
-      </div>
-
+    <div class="empty-section">
+      سيتم إضافة شروحات البرامج هنا قريباً.
     </div>
 
+
+    <!-- المنتجات -->
 
     <h2 class="section-title" id="products">
       منتجات جربتها
     </h2>
 
-    <div class="cards">
-
-      <div class="card">
-        <span class="category">AliExpress</span>
-
-        <h3>أداة أو وصلة رقم 1</h3>
-
-        <p>
-          هنا أضع تجربتي الحقيقية مع المنتج،
-          سبب شرائه، طريقة استخدامه،
-          وهل يستحق الشراء أم لا.
-        </p>
-
-        <a class="button" href="#" target="_blank" rel="noopener">
-          مشاهدة المنتج
-        </a>
-      </div>
-
-
-      <div class="card">
-        <span class="category">AliExpress</span>
-
-        <h3>أداة أو وصلة رقم 2</h3>
-
-        <p>
-          تجربة الاستخدام،
-          السيارات التي تم استخدام المنتج عليها،
-          وأهم الملاحظات قبل الطلب.
-        </p>
-
-        <a class="button" href="#" target="_blank" rel="noopener">
-          مشاهدة المنتج
-        </a>
-      </div>
-
-    </div>
-
-
-    <div class="note">
-      <strong>ملاحظة:</strong>
-
-      بعض الروابط الموجودة في الموقع قد تكون روابط شراء خارجية.
-      الهدف الأساسي من الموقع هو مشاركة التجربة والمعلومة
-      وتسهيل الوصول إلى الأدوات المناسبة.
+    <div class="empty-section">
+      سيتم إضافة المنتجات والروابط التي جربتها هنا قريباً.
     </div>
 
   </div>
 
 
   <footer>
+
     <strong>Tariq Tuner</strong>
 
     <br>
@@ -382,6 +436,7 @@
     <br>
 
     © 2026 جميع الحقوق محفوظة
+
   </footer>
 
 </body>
